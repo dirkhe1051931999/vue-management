@@ -63,6 +63,7 @@ vue+vue-router+node+koa+mysql+redis+socket
 12. [node+koa 项目的增删改查及项目的表结构](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-management/lessons/12.md)
 13. [node+koa 图片的上传、form 标签的处理和静态服务器](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-management/lessons/13.md)
 14. [vue 实现全局的组件、分页组件](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-management/lessons/14.md)
+15. [vue+koa 实现 github 登录授权](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-management/lessons/15.md)
 
 ## 实现效果
 
