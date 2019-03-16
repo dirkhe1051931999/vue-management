@@ -8,11 +8,12 @@ vue+vue-router+node+koa+mysql+redis+socket
 
 ## 版本
 
-`v1.0.0`
+`v1.0.1`
 
 ## 更新记录
 
-`暂无更新`
+1. 2019-03-16
+   - 增加github授权认证
 
 ## 完成的功能
 
@@ -25,7 +26,7 @@ vue+vue-router+node+koa+mysql+redis+socket
 
 ### 待完成的功能
 
-1. github 认证
+1. ~~github 认证~~
 2. 评论管理
 3. 编辑器的优化
 4. 首页增加可视化图表
@@ -64,13 +65,7 @@ vue+vue-router+node+koa+mysql+redis+socket
 14. [vue 实现全局的组件、分页组件](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-management/lessons/14.md)
 
 ## 实现效果
-![效果1](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/1.png)
-![效果2](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/2.png)
-![效果3](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/3.png)
-![效果4](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/4.png)
-![效果5](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/5.png)
-![效果6](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/6.png)
-![效果7](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/7.png)
-![效果8](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/8.png)
+
+![效果1](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/1.png) ![效果2](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/2.png) ![效果3](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/3.png) ![效果4](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/4.png) ![效果5](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/5.png) ![效果6](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/6.png) ![效果7](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/7.png) ![效果8](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/8.png)
 
 ## MIT
