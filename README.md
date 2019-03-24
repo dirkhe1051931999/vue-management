@@ -8,12 +8,12 @@ vue+vue-router+node+koa+mysql+redis+socket
 
 ## 版本
 
-`v1.0.1`
+`v1.0.2`
 
 ## 更新记录
 
 1. 2019-03-16
-   - 增加github授权认证
+   - 增加 github 授权认证
 2. 2019-03-24
    - 增加留言功能
 
@@ -25,7 +25,7 @@ vue+vue-router+node+koa+mysql+redis+socket
 4. 分类列表，分类的删除，编辑，新增
 5. 标签列表，标签的删除，编辑，新增
 6. 项目列表，项目的删除，编辑，新增
-7. 留言板与github认证
+7. 留言板与 github 认证
 
 ### 待完成的功能
 
@@ -34,7 +34,8 @@ vue+vue-router+node+koa+mysql+redis+socket
 3. 编辑器的优化
 4. 首页增加可视化图表
 5. 获取用户位置
-6. ...
+6. 留言管理功能
+7. ...
 
 ## 注意事项
 
