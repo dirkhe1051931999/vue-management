@@ -11,9 +11,8 @@ exports.addComment = async (ctx) => {
   try {
     // 解密payload，获取用户名和ID
     let payload = await verify(ctx.request.body.token.split(' ')[1], config.tokenSecret);
-    commentData.userId = payload.id;
+    commentData.fromUserId = payload.id;
   } catch (error) {
-    console.log(error);
     ctx.body = {
       success: -1,
       message: '用户登录信息已过期，请重新登录'
@@ -28,34 +27,33 @@ exports.addComment = async (ctx) => {
     if (insert.affectedRows > 0) {
       ctx.body = {
         success: 1,
-        id: insert.insertId,
-        number: maxNumber
+        data: {
+          fromUserId: commentData.fromUserId,
+          toUserId: commentData.toUserId,
+          number: maxNumber
+        }
       };
     } else {
       ctx.body = {
         success: 0,
-        message: '添加文章出错'
+        message: '添加评论错误'
       };
     }
   } catch (error) {
     console.log(error);
     ctx.body = {
       success: 0,
-      message: '添加文章出错'
+      message: '添加评论错误'
     };
   }
 }
 // 获取文章的评论
 exports.getCommentsByPostId = async (ctx) => {
-  let postId = ctx.params.postId || 0,
-    sql = `SELECT comments.*, user.avatar, user.userName, cr.content AS replyContent, 
-      cr.createdTime AS replyTime, cru.userName AS replyUserName, 
-      cru.avatar AS replyAvatar, cr.number AS replyNumber
-      FROM comments 
-      LEFT JOIN user ON comments.userId = user.id
-      LEFT JOIN comments cr on comments.replyId = cr.id
-      LEFT JOIN user cru on cr.userId = cru.id 
-      WHERE comments.postId = ? ORDER BY comments.createdTime DESC`;
+  let postId = ctx.params.postId || 0;
+  sql = `SELECT comments.*, user.avatar as fromAvatar, user.userName as fromUserName
+        FROM comments
+        LEFT JOIN user ON comments.fromUserId = user.id
+        WHERE comments.postId = ? ORDER BY comments.createdTime DESC`
   try {
     let comments = await ctx.execSql(sql, postId);
     ctx.body = {
@@ -64,11 +62,10 @@ exports.getCommentsByPostId = async (ctx) => {
       comments: comments
     };
   } catch (error) {
-    console.log(error);
+    console.log(error)
     ctx.body = {
       success: 0,
-      message: '查询数据出错',
-      comments: null
+      message: '获取评论错误'
     };
   }
 }

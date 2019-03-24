@@ -14,6 +14,8 @@ vue+vue-router+node+koa+mysql+redis+socket
 
 1. 2019-03-16
    - 增加github授权认证
+2. 2019-03-24
+   - 增加留言功能
 
 ## 完成的功能
 
@@ -23,11 +25,12 @@ vue+vue-router+node+koa+mysql+redis+socket
 4. 分类列表，分类的删除，编辑，新增
 5. 标签列表，标签的删除，编辑，新增
 6. 项目列表，项目的删除，编辑，新增
+7. 留言板与github认证
 
 ### 待完成的功能
 
 1. ~~github 认证~~
-2. 评论管理
+2. ~~评论管理~~
 3. 编辑器的优化
 4. 首页增加可视化图表
 5. 获取用户位置
@@ -64,6 +67,7 @@ vue+vue-router+node+koa+mysql+redis+socket
 13. [node+koa 图片的上传、form 标签的处理和静态服务器](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-management/lessons/13.md)
 14. [vue 实现全局的组件、分页组件](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-management/lessons/14.md)
 15. [vue+koa 实现 github 登录授权](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-management/lessons/15.md)
+16. [留言功能](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-management/lessons/16.md)
 
 ## 实现效果
 

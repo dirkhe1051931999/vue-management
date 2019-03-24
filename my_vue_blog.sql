@@ -192,3 +192,28 @@ CREATE TABLE `user` (
 -- ----------------------------
 INSERT INTO `user` VALUES ('42', 'admin', 'OyvBJWCqguq1BEhOZPAhnualoF+VrmIX2BR7S55PQb47yUkfsel06xSezGSdi9TmgRrFIi5YYR3biHJkbs7Dxw==', 'TGF6J9dYebxEG026OGEWZA==', null, 'ADMIN', '2019-03-09 17:16:20', null);
 INSERT INTO `user` VALUES ('43', 'dirkhe1051931999', null, null, 'https://avatars1.githubusercontent.com/u/22389976?v=4', 'GUEST', '2019-03-15 22:30:45', '1051931999@qq.com');
+
+
+-- ----------------------------
+-- Table structure for comments
+-- ----------------------------
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `postId` int(11) DEFAULT NULL COMMENT '文章id',
+  `content` text COMMENT '评论内容',
+  `fromUserId` int(11) DEFAULT NULL COMMENT '评论用户',
+  `toUserId` int(11) DEFAULT NULL COMMENT '目标用户',
+  `createdTime` datetime DEFAULT NULL COMMENT '创建时间',
+  `number` int(11) DEFAULT NULL COMMENT 'number',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of comments
+-- ----------------------------
+INSERT INTO `comments` VALUES ('23', '41', '1', '43', '0', '2019-03-23 22:14:51', '1');
+INSERT INTO `comments` VALUES ('24', '41', '2', '43', '0', '2019-03-23 22:14:53', '2');
+INSERT INTO `comments` VALUES ('25', '41', '3', '43', '0', '2019-03-23 22:14:55', '3');
+INSERT INTO `comments` VALUES ('26', '41', '123123', '43', '43', '2019-03-23 22:27:14', '4');
+INSERT INTO `comments` VALUES ('27', '29', '1', '43', '0', '2019-03-23 23:57:20', '1');

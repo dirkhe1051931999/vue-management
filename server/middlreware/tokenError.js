@@ -7,10 +7,12 @@ const verify = util.promisify(jwt.verify);
  */
 module.exports = function () {
   return async function (ctx, next) {
+    if (ctx.path == '/favicon.ico') {
+      ctx.res.end();
+    }
     try {
       // 获取jwt
       const token = ctx.header.authorization;
-      console.log(token)
       if (token) {
         try {
           // 解密payload，获取用户名和ID
@@ -25,7 +27,6 @@ module.exports = function () {
       }
       await next();
     } catch (err) {
-      console.log(err)
       if (err.status === 401) {
         ctx.status = 401;
         ctx.body = {

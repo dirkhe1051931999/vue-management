@@ -108,3 +108,18 @@ CREATE TABLE `user` (
   `email` varchar(50) DEFAULT NULL COMMENT '邮箱',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+-- ----------------------------
+-- Table structure for comments
+-- ----------------------------
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `postId` int(11) DEFAULT NULL COMMENT '文章id',
+  `content` text COMMENT '评论内容',
+  `fromUserId` int(11) DEFAULT NULL COMMENT '评论用户',
+  `toUserId` int(11) DEFAULT NULL COMMENT '目标用户',
+  `createdTime` datetime DEFAULT NULL COMMENT '创建时间',
+  `number` int(11) DEFAULT NULL COMMENT 'number',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
