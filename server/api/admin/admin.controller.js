@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const helper = require('../../util/helper');
 const config = require('../../config/environment');
-
 // 登录
 exports.login = async (ctx) => {
   let userName = ctx.request.body.userName || '',
@@ -16,9 +15,9 @@ exports.login = async (ctx) => {
   try {
     let results = await ctx.execSql(`SELECT id, hashedPassword, salt FROM user WHERE role='ADMIN' and userName = ?`, userName);
     if (results.length > 0) {
-      let hashedPassword = results[0].hashedPassword,
-        salt = results[0].salt,
-        hashPassword = helper.encryptPassword(password, salt);
+      let hashedPassword = results[0].hashedPassword;
+      let salt = results[0].salt;
+      let hashPassword = helper.encryptInputPassword(password, salt);
       if (hashedPassword === hashPassword) {
         ctx.session.user = userName;
         // 用户token
@@ -56,7 +55,7 @@ exports.login = async (ctx) => {
   }
 }
 // 登出
-exports.signOut = async(ctx) => {
+exports.signOut = async (ctx) => {
   ctx.session.user = null;
   ctx.body = {
     success: 1,

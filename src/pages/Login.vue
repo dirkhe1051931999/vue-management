@@ -35,6 +35,7 @@
 
 <script>
 import api from '@/fetch/api';
+import crypto from 'crypto'
 export default {
   components: {},
   name: '',
@@ -46,6 +47,13 @@ export default {
     }
   },
   methods: {
+    enCrypty: function (psw) {
+      let result;
+      let sugar = "!@A#$Q%W^E&R*T()_+a_1";
+      let md5 = crypto.createHash("md5")
+      result = md5.update(sugar+psw).digest('hex')
+      return result
+    },
     login: async function () {
       if (this.userName === '') {
         this.errMsg = '用户名不能为空';
@@ -55,13 +63,15 @@ export default {
         this.errMsg = '密码不能为空';
         return false;
       }
-
-      let res = await api.login(this.userName, this.password);
+      let newPsw = this.enCrypty(this.password+'');
+      let res = await api.login(this.userName, newPsw);
       if (res.success === 1) {
         this.errMsg = '';
         localStorage.setItem('BLOG_TOKEN', res.token);
+        alert("登录成功")
         this.$router.push({ path: '/postlist' });
       } else {
+        alert("登录失败")
         this.errMsg = res.message;
       }
     }

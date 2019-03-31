@@ -30,7 +30,7 @@ module.exports = {
   uploads: 'uploads',
   port: 9000,
   tokenSecret: 'test',
-  isUpdateAdmin: true,
+  isUpdateAdmin: false,
   accessControlAllowOrigin: 'http://127.0.0.1:3000',
   adminName: 'admin',
   adminPassword: '123456',

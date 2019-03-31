@@ -25,6 +25,22 @@ exports.makeSalt = () => {
 exports.encryptPassword = (password, salt) => {
   if (!password || !salt) return '';
   var salt = new Buffer(salt, 'base64');
+  let sugar = "!@A#$Q%W^E&R*T()_+a_1";
+  let newPassword = crypto.createHash("md5").update(sugar + password).digest('hex');
+  return crypto
+    .pbkdf2Sync(newPassword, salt, 10000, 64, 'sha1')
+    .toString('base64');
+};
+/**
+ * Encrypt input password
+ *
+ * @param {String} password
+ * @return {String}
+ * @api public
+ */
+exports.encryptInputPassword = (password, salt) => {
+  if (!password || !salt) return '';
+  var salt = new Buffer(salt, 'base64');
   return crypto
     .pbkdf2Sync(password, salt, 10000, 64, 'sha1')
     .toString('base64');
@@ -50,12 +66,11 @@ exports.uploadFile = (ctx) => {
     form.keepExtensions = true; // 保留后缀
     form.maxFieldsSize = 2 * 1024 * 1024; // 文件大小2M
     form.multiples = true;
-    
     form.uploadDir = path.join(config.root, config.appPath, config.tempUploads);
     mkdirsSync(form.uploadDir);
     // 解析文件
     form.parse(ctx.req, (err, fields, files) => {
-      console.log("->>>>>>>",fields)
+      console.log("->>>>>>>", fields)
       if (err) {
         reject(err)
       }

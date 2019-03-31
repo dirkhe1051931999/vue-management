@@ -8,7 +8,7 @@ vue+vue-router+node+koa+mysql+redis+socket
 
 ## 版本
 
-`v1.0.2`
+`v1.0.3`
 
 ## 更新记录
 
@@ -16,6 +16,8 @@ vue+vue-router+node+koa+mysql+redis+socket
    - 增加 github 授权认证
 2. 2019-03-24
    - 增加留言功能
+3. 2019-03-31
+   - 帐号登录时前端密码加密
 
 ## 完成的功能
 
