@@ -20,6 +20,8 @@
 
 <script>
 export default {
+  components: {},
+  name: '',
   data() {
     return {
       isShowMessage: false,
@@ -30,31 +32,29 @@ export default {
       timer: null,
       resolve: '',
       reject: '',
-      promise: '' // 保存promise对象
-    };
+      promise: ''
+    }
   },
   methods: {
-    showMessage: function () {
+    showMessage() {
       this.isShowMessage = true;
       this.messageTimer();
       this.promise = new Promise((resolve, reject) => {
         this.resolve = resolve;
         this.reject = reject;
       });
-      console.log(this.isShowMessage);
-      // 返回promise对象
       return this.promise;
     },
-    remove: function () {
+    remove() {
       setTimeout(() => {
         this.destroy();
-      }, 300);
+      }, 200);
     },
-    destroy: function () {
+    destroy() {
       this.$destroy();
       document.body.removeChild(this.$el);
     },
-    messageTimer: function () {
+    messageTimer() {
       if (this.duration > 0) {
         this.timer = setTimeout(() => {
           this.isShowMessage = false;
@@ -63,13 +63,19 @@ export default {
         }, this.duration);
       }
     },
-    mouseOver: function () {
+    mouseOver() {
       clearTimeout(this.timer);
     },
-    mouseLeave: function () {
+    mouseLeave() {
       this.messageTimer();
     }
-  }
+  },
+  created() {
+
+  },
+  mounted() {
+
+  },
 }
 </script>
 
@@ -90,23 +96,23 @@ export default {
   z-index: 99999;
 
   &.message-success {
-    background-color: #f0f9eb;
-    border-color: #e1f3d8;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: #eee;
     color: #67c23a;
   }
   &.message-warning {
-    background-color: oldlace;
-    border-color: #fbeccd;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: #eee;
     color: #eb9e05;
   }
   &.message-error {
-    background-color: #fee;
-    border-color: #fedddd;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: #eee;
     color: #fa5555;
   }
   &.message-info {
-    background-color: #edf2fc;
-    border-color: #e6ebf5;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: #eee;
     color: #878d99;
   }
 

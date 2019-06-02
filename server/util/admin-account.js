@@ -10,6 +10,7 @@ exports.saveAdminAccount = async function () {
   try {
     let salt = helper.makeSalt();
     let hashedPassword = helper.encryptPassword(account.password, salt);
+    
     let selectAdmin = await sqlQuery(`SELECT * FROM user WHERE role='ADMIN'`);
     if (selectAdmin.length > 0) {
       let id = selectAdmin[0].id;

@@ -248,7 +248,7 @@ exports.getPostsByKeyword = async (ctx) => {
     };
   }
 }
-// 获取实验室作品
+// 获取个人作品
 exports.getLaboratory = async (ctx) => {
   try {
     let results = await ctx.execSql(`SELECT * FROM laboratory ORDER BY createTime DESC`);

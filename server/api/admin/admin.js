@@ -55,14 +55,14 @@ router.delete('/deleteTag/:id', tag.deleteTag);
 // 搜索文章标签
 router.get('/searchTagByName/:name', tag.searchTagByName);
 
-// 实验室项目路由
-// 获取所有实验室项目
+// 个人项目路由
+// 获取所有个人项目
 router.get('/getLaboratories', laboratory.getLaboratories);
-// 添加实验室项目
+// 添加个人项目
 router.post('/createNewLaboratory', laboratory.createNewLaboratory);
-// 更新实验室项目
+// 更新个人项目
 router.post('/updateLaboratory', laboratory.updateLaboratory);
-// 删除实验室项目
+// 删除个人项目
 router.delete('/deleteLaboratory/:id', laboratory.deleteLaboratory);
 
 module.exports = router;

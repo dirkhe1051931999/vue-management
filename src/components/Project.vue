@@ -1,5 +1,5 @@
 <template>
-  <section class="project">
+  <div class="project">
     <div :class="['part-one', `${position === 'right' ? 'right' : 'left'}`]">
       <img
         :src="project.poster"
@@ -31,7 +31,7 @@
       <p class="description">{{ project.description }}</p>
       <p
         class="link-address"
-        v-if="project.link !== ''"
+        v-if="project.link"
       >
         <a
           :href="project.link"
@@ -66,7 +66,7 @@
         </a>
       </p>
     </div>
-    <DBDialog
+    <Dialog
       :title="dialogTitle"
       :visible="isShowDialog"
       @hideDialog="hideDialog"
@@ -78,7 +78,10 @@
               <label for="laboratory.poster">项目图片</label>
             </div>
             <div class="file-img">
-              <Upload :src="laboratory.poster" @uploadFile="getImgFile"></Upload>
+              <Upload
+                :src="laboratory.poster"
+                @uploadFile="getImgFile"
+              ></Upload>
             </div>
           </div>
           <div class="col-6 fl">
@@ -135,28 +138,26 @@
         >取 消</button>
         <button
           class="btn-primary"
-          @click="confrimLaboratory"
+          @click="confirmLaboratory"
         >确 定</button>
       </div>
-    </DBDialog>
-  </section>
+    </Dialog>
+  </div>
 </template>
 
 <script>
-import api from '@/fetch/api';
-import DBDialog from '@/components/DB-Dialog';
-import Upload from '@/components/Upload';
+import api from "api/api"
 export default {
   components: {
-    DBDialog,
-    Upload
+    Dialog: () => import("components/dialog"),
+    Upload: () => import("components/upload")
   },
   props: {
     project: {
       type: Object,
       default: {}
     },
-    currentIndex:Number,
+    currentIndex: Number,
     position: String
   },
   name: '',
@@ -169,39 +170,37 @@ export default {
     }
   },
   methods: {
-    updateProject: function () {
+    updateProject() {
       this.isShowDialog = true;
     },
-    deleteProject: function () {
-      this.$msgBox.showMsgBox({
-        title: '确认删除',
-        content: '确实是否删除该项目？'
-      }).then(async () => {
-        let res = await api.deleteLaboratory(this.project.id);
-        if (res.success === 1) {
-          this.$message.showMessage({
-            type: 'success',
-            content: '删除项目成功'
-          });
-          this.$emit('deleteLab',this.currentIndex)
-        } else {
-          this.$message.showMessage({
-            type: 'error',
-            content: res.message
-          });
-        }
-      }).catch(() => {
-        return false;
-      });
+    deleteProject() {
+      this.$msgBox.showMsgBox(_msg_.messagebox.deleteProject)
+        .then(async () => {
+          let res = await api.deleteLaboratory(this.project.id);
+          if (res.success === 1) {
+            this.$message.showMessage({
+              type: 'success',
+              content: '删除项目成功'
+            });
+            this.$emit('deleteLab', this.currentIndex)
+          } else {
+            this.$message.showMessage({
+              type: 'error',
+              content: res.message
+            });
+          }
+        }).catch(() => {
+          return false;
+        });
     },
-    hideDialog: function () {
+    hideDialog() {
       this.isShowDialog = false;
     },
     getImgFile(file, imgSrc) {
       this.imgFile = file;
       this.laboratory.poster = imgSrc;
     },
-    confrimLaboratory: async function () {
+    async confirmLaboratory() {
       this.isShowDialog = false;
       let formData = new FormData();
       formData.append('uploadFile', this.imgFile);
@@ -212,6 +211,10 @@ export default {
           type: 'success',
           content: '修改项目成功'
         });
+        this.$emit('confirmLaboratory',{
+          item:this.laboratory,
+          index:this.currentIndex
+        });
       } else {
         this.$message.showMessage({
           type: 'error',
@@ -219,7 +222,7 @@ export default {
         });
       }
     },
-    cancel: function () {
+    cancel() {
       this.laboratory = Object.assign({}, this.project);
       this.isShowDialog = false;
     }
@@ -234,7 +237,7 @@ export default {
 </script>
 
 <style scoped lang='less'>
-@import "../assets/less/index";
+@import "~common/styles/vars";
 .project {
   position: relative;
   overflow: hidden;
@@ -305,7 +308,6 @@ export default {
       float: right;
       left: 75%;
     }
-
     h3 {
       font-size: 1.5em;
     }

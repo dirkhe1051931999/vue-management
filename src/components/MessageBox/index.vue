@@ -51,7 +51,7 @@ export default {
     },
     content: {
       type: String,
-      default: '这是弹框内容'
+      default: '内容'
     },
     isShowInput: false,
     inputValue: '',
@@ -72,17 +72,18 @@ export default {
       default: '确定'
     }
   },
+  components: {},
+  name: '',
   data() {
     return {
       isShowMessageBox: false,
       resolve: '',
       reject: '',
-      promise: '' // 保存promise对象
-    };
+      promise: ''
+    }
   },
   methods: {
-    // 确定,将promise断定为resolve状态
-    confirm: function () {
+    confirm() {
       this.isShowMessageBox = false;
       if (this.isShowInput) {
         this.resolve(this.inputValue);
@@ -91,40 +92,42 @@ export default {
       }
       this.remove();
     },
-    // 取消,将promise断定为reject状态
-    cancel: function () {
+    cancel() {
       this.isShowMessageBox = false;
       this.reject('cancel');
       this.remove();
     },
-    // 弹出messageBox,并创建promise对象
-    showMsgBox: function () {
+    showMsgBox() {
       this.isShowMessageBox = true;
       this.promise = new Promise((resolve, reject) => {
         this.resolve = resolve;
         this.reject = reject;
       });
-      // 返回promise对象
       return this.promise;
     },
-    remove: function () {
+    remove() {
       setTimeout(() => {
         this.destroy();
       }, 300);
     },
-    destroy: function () {
+    destroy() {
       this.$destroy();
       document.body.removeChild(this.$el);
     }
-  }
+  },
+  created() {
+
+  },
+  mounted() {
+
+  },
 }
 </script>
 
 <style scoped lang='less'>
-@import "../../assets/less/index";
+@import "~common/styles/vars";
 .message-box {
   position: relative;
-
   .message-content {
     position: fixed;
     box-sizing: border-box;
@@ -144,7 +147,6 @@ export default {
       height: 0.9em;
       color: #878d99;
       cursor: pointer;
-
       &:hover {
         color: @base-color;
       }
@@ -173,7 +175,6 @@ export default {
       line-height: 1;
       outline: none;
       padding: 0 1em;
-
       &:focus {
         border-color: @base-color;
       }
@@ -182,7 +183,6 @@ export default {
       margin-top: 1em;
       float: right;
       overflow: hidden;
-
       .btn-confirm {
         margin-left: 1em;
       }

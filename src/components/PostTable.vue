@@ -4,6 +4,7 @@
       <thead>
         <tr>
           <th>#</th>
+          <th>id</th>
           <th>标题</th>
           <th>分类</th>
           <th>创建时间</th>
@@ -15,6 +16,7 @@
         <template v-for="(post, index) in postList">
           <tr :key="post.id">
             <td>{{ index + 1 }}</td>
+            <td>{{ post.id }}</td>
             <td>{{ post.title }}</td>
             <td>{{ post.categoryName }}</td>
             <td>{{ post.createTime | formatTime }}</td>
@@ -50,17 +52,25 @@
 
 <script>
 import moment from 'moment';
-import api from '../fetch/api';
+import api from 'api/api';
 export default {
-  components: {},
+  components: {
+
+  },
   props: {
     postList: Array
   },
+  name: '',
+  data() {
+    return {
+
+    }
+  },
   filters: {
-    formatTime: function (createTime) {
+    formatTime(createTime) {
       return moment(createTime).format('YYYY-MM-DD HH:mm:ss');
     },
-    setStatus: function (status) {
+    setStatus(status) {
       let showStatus = '';
       switch (status) {
         case 'PUBLISHED':
@@ -78,84 +88,70 @@ export default {
       return showStatus;
     }
   },
-  name: '',
-  data() {
-    return {
-
-    }
-  },
   methods: {
     offlinePost(postId, index) {
-      this.$msgBox.showMsgBox({
-        title: '确认下线',
-        content: '确认是否下线该篇文章？'
-      }).then(async ()=>{
-        let res = await api.offlinePost(postId);
-        if(res.success ===1){
-          this.postList[index].status = 'OFFLINE';
-          this.$message.showMessage({
-            type: 'success',
-            content: '下线文章成功'
-          });
-        }else{
-          this.$message.showMessage({
-            type: 'error',
-            content: res.message
-          });
-        }
-      }).catch(() => {
-        return false;
-      });
+      this.$msgBox.showMsgBox(_msg_.messagebox.offlinePost)
+        .then(async () => {
+          let res = await api.offlinePost(postId);
+          if (res.success === 1) {
+            this.postList[index].status = 'OFFLINE';
+            this.$message.showMessage({
+              type: 'success',
+              content: '下线文章成功'
+            });
+          } else {
+            this.$message.showMessage({
+              type: 'error',
+              content: res.message
+            });
+          }
+        }).catch(() => {
+          return false;
+        });
     },
     publishPost(postId, index) {
-      this.$msgBox.showMsgBox({
-        title: '确认发布',
-        content: '确认是否发布该篇文章？'
-      }).then(async () => {
-        let res = await api.publishPost(postId);
-        if (res.success === 1) {
-          this.postList[index].status = 'PUBLISHED';
-          this.$message.showMessage({
-            type: 'success',
-            content: '发布文章成功'
-          });
-        } else {
-          this.$message.showMessage({
-            type: 'error',
-            content: res.message
-          });
-        }
-      }).catch(() => {
-        return false;
-      });
+      this.$msgBox.showMsgBox(_msg_.messagebox.publishPost)
+        .then(async () => {
+          let res = await api.publishPost(postId);
+          if (res.success === 1) {
+            this.postList[index].status = 'PUBLISHED';
+            this.$message.showMessage({
+              type: 'success',
+              content: '发布文章成功'
+            });
+          } else {
+            this.$message.showMessage({
+              type: 'error',
+              content: res.message
+            });
+          }
+        }).catch(() => {
+          return false;
+        });
     },
     deletePost(postId, index) {
-      this.$msgBox.showMsgBox({
-        title: '确认删除',
-        content: '删除后无法恢复，确认删除该篇文章？'
-      }).then(async () => {
-        let res = await api.deletePost(postId);
-        if (res.success === 1) {
-          this.postList.splice(index, 1);
-          this.$emit('deletePost');
-          this.$message.showMessage({
-            type: 'success',
-            content: '删除文章成功'
-          });
-        } else {
-          this.$message.showMessage({
-            type: 'error',
-            content: res.message
-          });
-        }
-      }).catch(() => {
-        return false;
-      });
+      this.$msgBox.showMsgBox(_msg_.messagebox.deletePost)
+        .then(async () => {
+          let res = await api.deletePost(postId);
+          if (res.success === 1) {
+            this.postList.splice(index, 1);
+            this.$emit('deletePost');
+            this.$message.showMessage({
+              type: 'success',
+              content: '删除文章成功'
+            });
+          } else {
+            this.$message.showMessage({
+              type: 'error',
+              content: res.message
+            });
+          }
+        }).catch(() => {
+          return false;
+        });
     }
   },
-  created() {
-
-  },
+  created() {},
   mounted() {
 
   },
@@ -163,7 +159,7 @@ export default {
 </script>
 
 <style scoped lang='less'>
-@import "../assets/less/index";
+@import "~common/styles/vars";
 .post-table {
   table {
     width: 100%;
@@ -184,7 +180,6 @@ export default {
       button {
         padding: 0.4em 1em;
         margin-left: 1em;
-
         &.btn-offline {
           background-color: #eb9e05;
           color: #fff;

@@ -1,6 +1,6 @@
 const helper = require('../../util/helper');
 const moment = require('moment');
-// 获取实验室项目
+// 获取个人项目
 exports.getLaboratories = async (ctx) => {
   let sql = `SELECT * FROM laboratory ORDER BY createTime desc`;
   try {
@@ -18,7 +18,7 @@ exports.getLaboratories = async (ctx) => {
     };
   }
 }
-// 添加实验室项目
+// 添加个人项目
 exports.createNewLaboratory = async (ctx) => {
   let result;
   try {
@@ -53,7 +53,7 @@ exports.createNewLaboratory = async (ctx) => {
     };
   }
 }
-// 更新实验室项目
+// 更新个人项目
 exports.updateLaboratory = async (ctx) => {
   let result;
   try {
@@ -81,7 +81,7 @@ exports.updateLaboratory = async (ctx) => {
     };
   }
 }
-// 删除实验室项目
+// 删除个人项目
 exports.deleteLaboratory = async (ctx) => {
   let id = ctx.params.id || 0;
   console.log(id)

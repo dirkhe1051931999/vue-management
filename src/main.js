@@ -1,33 +1,42 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
-import router from './router'
-import axios from 'axios';
+import App from './App.vue'
+// message参数
+import {
+  _message
+} from "./config/messge"
+// axios
+import axios from "axios"
+// 路由
+import router from "./router/router"
+// vuex
+import store from './store/index'
+// socket
 import VueSocketio from 'vue-socket.io';
+// socket-client
 import socketio from 'socket.io-client';
-
-import MessageBox from './components/MessageBox/index';
-import Message from './components/Message/index';
-Vue.use(MessageBox);
-Vue.use(Message);
-
+// message
+import Message from './components/message/index';
+// MessageBox
+import MessageBox from './components/messageBox/index';
+Vue.config.productionTip = false
+// 给window上挂一个message
+window._msg_ = _message
+// socket
 Vue.use(VueSocketio, socketio('http://127.0.0.1:9000', {
   path: '/testsocketiopath'
 }));
-Vue.config.productionTip = false
-
+// message
+Vue.use(Message);
+// messageBox
+Vue.use(MessageBox);
+// 权限验证
 axios.interceptors.response.use(
   response => {
     return response;
   },
   error => {
     if (error.response.status === 401) {
-      Vue.prototype.$msgBox.showMsgBox({
-        title: '错误提示',
-        content: '您的登录信息已失效，请重新登录',
-        isShowCancelBtn: false
-      }).then((val) => {
+      Vue.prototype.$msgBox.showMsgBox(_msg_.messagebox.loseToken).then((val) => {
         router.push('/login');
       }).catch(() => {
         console.log('cancel');
@@ -41,12 +50,10 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 )
-/* eslint-disable no-new */
+
+
 new Vue({
-  el: '#app',
   router,
-  components: {
-    App
-  },
-  template: '<App/>'
-})
+  store,
+  render: h => h(App)
+}).$mount('#app')

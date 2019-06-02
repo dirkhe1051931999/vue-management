@@ -1,5 +1,5 @@
 <template>
-  <section class="upload">
+  <div class="upload">
     <div :class="['upload-file', { 'existFile': imgSrc !== ''}]">
       <img
         :src="imgSrc"
@@ -34,7 +34,7 @@
       accept="image/png,image/jpeg"
       @change="fileChanged"
     >
-  </section>
+  </div>
 </template>
 
 <script>
@@ -61,7 +61,7 @@ export default {
     }
   },
   watch: {
-    src: function () {
+    src() {
       this.imgSrc = this.src;
     }
   },
@@ -140,11 +140,10 @@ export default {
 </script>
 
 <style scoped lang='less'>
-@import "../assets/less/index";
+@import "~common/styles/vars";
 .upload {
   height: 100%;
   text-align: center;
-
   .upload-file {
     width: 100%;
     height: 100%;
@@ -153,7 +152,6 @@ export default {
       width: 100%;
       height: 100%;
     }
-
     &.existFile {
       .add-file {
         display: none;

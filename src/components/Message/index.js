@@ -1,10 +1,10 @@
-import msgVue from './index.vue';
+import _index from './index.vue';
 
 // 定义插件对象
 const Message = {};
 // vue的install方法，用于定义vue插件
 Message.install = function (Vue, options) {
-  const MessageInstance = Vue.extend(msgVue);
+  const MessageInstance = Vue.extend(_index);
   let currentMsg;
   const initInstance = () => {
     // 实例化vue实例

@@ -7,12 +7,15 @@ const jwt = require('jsonwebtoken');
 // 吊起github登录 
 exports.githubOAuth = async (ctx) => {
   const code = ctx.query.code;
+  // 接口
   let path = 'https://github.com/login/oauth/access_token';
+  // 参数
   const params = {
     client_id: config.oAuth.github.client_id,
     client_secret: config.oAuth.github.client_secret,
     code: code
   };
+  // 请求接口
   await fetch(path, {
       method: 'POST',
       headers: {
@@ -67,6 +70,7 @@ exports.githubOAuth = async (ctx) => {
             ctx.body = {
               success: 1,
               token: token,
+              id:userId,
               userName: res.login,
               avatar: res.avatar_url,
               message: ''

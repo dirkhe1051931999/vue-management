@@ -20,8 +20,8 @@ module.exports = {
   },
   oAuth: {
     github: {
-      client_id: '6625cb27769b1bc52415',
-      client_secret: '5ead47391fd5b132957bc4bf84400d5cacd1e748'
+      client_id: 'b0fbc6a7d4ff2b320158',
+      client_secret: 'a02a9f6bac91f3acee2dc8aae86513bc2a94a6b6'
     }
   },
   root: path.normalize(__dirname + '/..'),

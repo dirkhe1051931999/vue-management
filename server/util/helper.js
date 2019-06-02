@@ -66,6 +66,7 @@ exports.uploadFile = (ctx) => {
     form.keepExtensions = true; // 保留后缀
     form.maxFieldsSize = 2 * 1024 * 1024; // 文件大小2M
     form.multiples = true;
+
     form.uploadDir = path.join(config.root, config.appPath, config.tempUploads);
     mkdirsSync(form.uploadDir);
     // 解析文件

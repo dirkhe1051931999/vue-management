@@ -4,11 +4,15 @@
 
 ## 技术栈
 
-vue+vue-router+node+koa+mysql+redis+socket
+1. vue/vue-router/vuex/webpack4
+2. koa
+3. mysql
+4. redis
+5. websocket
 
 ## 版本
 
-`v1.0.3`
+`v2.0`
 
 ## 更新记录
 
@@ -18,16 +22,24 @@ vue+vue-router+node+koa+mysql+redis+socket
    - 增加留言功能
 3. 2019-03-31
    - 帐号登录时前端密码加密
+4. 2019-06-02
+   - 升级到 vue-cli3
+   - 优化页面
+   - 修复已知的 bug
+   - 增加了 vuex 状态管理
 
 ## 完成的功能
 
-1. 登录页面
-2. 文章列表，文章的编辑，发布，下线，socket 实时保存
-3. 新增文章编辑
-4. 分类列表，分类的删除，编辑，新增
-5. 标签列表，标签的删除，编辑，新增
-6. 项目列表，项目的删除，编辑，新增
-7. 留言板与 github 认证
+- v1.x
+  1. 登录页面
+  2. 文章列表，文章的编辑，发布，下线，socket 实时保存
+  3. 新增文章编辑
+  4. 分类列表，分类的删除，编辑，新增
+  5. 标签列表，标签的删除，编辑，新增
+  6. 项目列表，项目的删除，编辑，新增
+  7. 留言板与 github 认证
+- v2.x
+  1. 项目升级到 vue-cli3
 
 ### 待完成的功能
 
@@ -43,7 +55,7 @@ vue+vue-router+node+koa+mysql+redis+socket
 
 1. vue.socket.io 版本必须是`^2.1.1-a`
 2. 安装 mysql，用 `navicat` 连接 mysql，导入项目中 sql 文件，`my_vue_blog` 是有数据和结构的文件，`my_vue_blog2` 是只有结构，注意数据库名字和数据库登录的帐号密码
-3. 安装 redis,用 `RedisDesktopManager` 连接 redis，前提是开启了 redis 服务（如果配置环境变量，则 cmd 中输入 `redis-server`，否则进入 redis 安装的目录里输入 `redis-server.exe` `redis.windows.conf`）
+3. 安装 redis, 用 `RedisDesktopManager` 连接 redis，前提是开启了 redis 服务（如果配置环境变量，则 cmd 中输入 `redis-server`，否则进入 redis 安装的目录里输入 `redis-server.exe` `redis.windows.conf`）
 4. 登录帐号是 `admin/123456`
 
 ## 如何使用
@@ -52,6 +64,56 @@ vue+vue-router+node+koa+mysql+redis+socket
 2. npm run redis
 3. npm run server
 4. npm run dev
+
+## 目录
+
+```txt
+├─public  # 静态页面
+├─server  # 服务端
+│  ├─api  # 前台/后台的接口
+│  │  ├─admin
+│  │  ├─oauth
+│  │  ├─post
+│  │  └─track
+│  ├─config # 配置文件
+│  │  ├─environment
+│  │  └─src # 上传的图片
+│  │      ├─tempUploads
+│  │      └─uploads
+│  │          ├─20190226
+│  │          ├─20190228
+│  │          ├─20190309
+│  │          └─20190602
+│  ├─middlreware # 一些中间件
+│  ├─routes # 后端路由
+│  └─util # 公共方法
+└─src # 后台代码
+    ├─api # resetful API
+    │  └─restfulApi
+    ├─assets # 静态文件夹
+    ├─common # 公共的代码
+    │  ├─images
+    │  ├─scripts
+    │  └─styles
+    ├─components # 组件
+    │  ├─header
+    │  ├─menu
+    │  ├─message
+    │  └─messageBox
+    ├─config # 配置文件
+    ├─router # 路由
+    ├─store  # vuex
+    └─views  # 页面
+        ├─404 # 404
+        ├─category # 分类
+        ├─edit # 编辑
+        ├─home # 首页
+        ├─itemlist # 个人项目
+        ├─login # 登录页
+        ├─musiclist # 空文件夹
+        ├─postlist # 文章列表
+        └─tag # 标签列表
+```
 
 ## 关键技术点
 
@@ -71,9 +133,22 @@ vue+vue-router+node+koa+mysql+redis+socket
 14. [vue 实现全局的组件、分页组件](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-management/lessons/14.md)
 15. [vue+koa 实现 github 登录授权](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-management/lessons/15.md)
 16. [留言功能](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-management/lessons/16.md)
+17. [vue 组件通信](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-vue/lessons/06.md)
+18. [vue-cli3.x 的配置文件详细介绍](https://github.com/dirkhe1051931999/hjBlog/tree/master/blog-vue/lessons/11.md)
+19. [rem 与 em](https://github.com/dirkhe1051931999/hjBlog/blob/master/blog-css/lessons/03.md)
+20. [webpack 优化相关](https://github.com/dirkhe1051931999/common-demo/tree/master/webpack-study-notes)
 
 ## 实现效果
 
-![效果1](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/1.png) ![效果2](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/2.png) ![效果3](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/3.png) ![效果4](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/4.png) ![效果5](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/5.png) ![效果6](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/6.png) ![效果7](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/7.png) ![效果8](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/8.png)
+- ![效果1](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/1.png)
+- ![效果2](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/2.png)
+- ![效果3](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/3.png)
+- ![效果4](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/4.png)
+- ![效果5](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/5.png)
+- ![效果6](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/6.png)
+- ![效果7](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/7.png)
+- ![效果8](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/8.png)
 
-## MIT
+## 其他
+
+> MIT

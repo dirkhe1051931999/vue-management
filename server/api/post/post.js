@@ -14,7 +14,7 @@ router.get('/category/:id', post.getPostsByCatId);
 router.get('/tag/:id', post.getPostsByTagId);
 // 根据关键字搜索
 router.get('/keyword/:keyword', post.getPostsByKeyword);
-// 获取实验室项目内容
+// 获取个人项目内容
 router.get('/getLaboratory', post.getLaboratory);
 // 添加评论
 router.post('/addComment', comment.addComment);

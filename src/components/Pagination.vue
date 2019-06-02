@@ -1,5 +1,5 @@
 <template>
-  <section class="pagination">
+  <div class="pagination">
     <span class="total">共 {{ total }} 条</span>
     <span
       :class="{ 'disabled': 1 === currentPage2 }"
@@ -15,7 +15,7 @@
       :class="{ 'disabled': currentPage2 === totalPage }"
       @click="nextPage"
     >&gt;</span>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       totalPage: 0,
-      currentPage2:0
+      currentPage2: 0
     }
   },
   methods: {
@@ -84,12 +84,11 @@ export default {
 </script>
 
 <style scoped lang='less'>
-@import "../assets/less/index";
+@import "~common/styles/vars";
 .pagination {
   position: relative;
   font-size: 1em;
   margin: 1em 0;
-
   span {
     margin: 0 0.4em;
     display: inline-block;
@@ -103,7 +102,6 @@ export default {
     border-radius: 0.2em;
     box-sizing: border-box;
     cursor: pointer;
-
     &.active {
       color: #fff;
       background: @base-color;
@@ -129,7 +127,6 @@ export default {
       margin: 0 0.5em 0 0;
       width: auto;
       cursor: default;
-
       &:hover {
         color: #666;
         background: #fff;
