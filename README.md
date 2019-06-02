@@ -140,14 +140,14 @@
 
 ## 实现效果
 
-- ![效果1](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/1.png)
-- ![效果2](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/2.png)
-- ![效果3](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/3.png)
-- ![效果4](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/4.png)
-- ![效果5](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/5.png)
-- ![效果6](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/6.png)
-- ![效果7](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/7.png)
-- ![效果8](https://github.com/dirkhe1051931999/vue-blog-management/blob/master/screenshot/8.png)
+- ![效果1](./screenshot/1.png)
+- ![效果2](./screenshot/2.png)
+- ![效果3](./screenshot/3.png)
+- ![效果4](./screenshot/4.png)
+- ![效果5](./screenshot/5.png)
+- ![效果6](./screenshot/6.png)
+- ![效果7](./screenshot/7.png)
+- ![效果8](./screenshot/8.png)
 
 ## 其他
 
