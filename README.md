@@ -58,6 +58,24 @@
 3. 安装 redis, 用 `RedisDesktopManager` 连接 redis，前提是开启了 redis 服务（如果配置环境变量，则 cmd 中输入 `redis-server`，否则进入 redis 安装的目录里输入 `redis-server.exe` `redis.windows.conf`）
 4. 登录帐号是 `admin/123456`
 
+## 常见问题
+
+```
+1. Warning: no config file specified, using the default config. In order to specify a config file use redis-server.exe /path/to/redis.conf
+
+解决方法：在redis目录下输入redis-server.exe  redis.windows.conf
+
+2. Creating Server TCP listening socket 127.0.0.1:6379: bind: No error
+
+解决方法：
+在redis目录下输入
+redis-cli.exe
+shutdown
+exit
+然后重新运行redis-server.exe redis.windows.conf
+
+```
+
 ## 如何使用
 
 1. npm install
