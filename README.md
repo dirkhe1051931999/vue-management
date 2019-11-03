@@ -9,6 +9,19 @@
 5. websocket
 6. element-ui
 
+## 如何使用
+
+```bash
+# 安装依赖
+npm install
+# 开启redis服务
+npm run redis
+# 开启后端服务 http://127.0.0.1:9001
+npm run server
+# 开启前端服务 http://127.0.0.1:9002
+npm run dev
+```
+
 ## 版本
 
 `v2.1`
@@ -76,13 +89,6 @@ exit
 然后重新运行redis-server.exe redis.windows.conf
 
 ```
-
-## 如何使用
-
-1. npm install
-2. npm run redis
-3. npm run server
-4. npm run dev
 
 ## 目录
 
