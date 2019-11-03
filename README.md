@@ -275,13 +275,13 @@ exit
 
 ## 实现效果
 
-- ![效果1](./screenshot/1.png)
-- ![效果2](./screenshot/2.png)
-- ![效果3](./screenshot/3.png)
-- ![效果4](./screenshot/4.png)
-- ![效果5](./screenshot/5.png)
-- ![效果6](./screenshot/6.png)
-- ![效果7](./screenshot/7.png)
-- ![效果8](./screenshot/8.png)
-- ![效果8](./screenshot/9.png)
-- ![效果8](./screenshot/10.png)
+![management_1.png](https://i.loli.net/2019/11/03/45zPwF1mWMSuxaA.png)  
+![management_2.png](https://i.loli.net/2019/11/03/9Z4XQVTBwUaG3H6.png)
+![management_3.png](https://i.loli.net/2019/11/03/DmlxzToWGr47PXi.png)
+![management_4.png](https://i.loli.net/2019/11/03/R4ojHfI7D698gW1.png)
+![management_5.png](https://i.loli.net/2019/11/03/rPjNQhf7C4X2yWe.png)
+![management_6.png](https://i.loli.net/2019/11/03/7REC9DkLGOVgmMu.png)
+![management_7.png](https://i.loli.net/2019/11/03/9qNp18nkmhDOevc.png)
+![management_8.png](https://i.loli.net/2019/11/03/GYnST3ztLK5al8v.png)
+![management_9.png](https://i.loli.net/2019/11/03/e5lSFJWiAtQ6Y2g.png)
+![management_10.png](https://i.loli.net/2019/11/03/QX7b63mdGwgfpBO.png)
