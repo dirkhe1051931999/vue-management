@@ -1,4 +1,8 @@
-// 文章列表
-export const postlist = state => state.postlist
-// 项目列表
-export const itemlist = state => state.itemlist
+const getters = {
+  sidebar: state => state.app.sidebar,
+  device: state => state.app.device,
+  token: state => state.user.token,
+  avatar: state => state.user.avatar,
+  name: state => state.user.name
+}
+export default getters

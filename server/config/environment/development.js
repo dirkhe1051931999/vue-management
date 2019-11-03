@@ -4,7 +4,7 @@ module.exports = {
     mysql: {
       host: '127.0.0.1',
       user: 'root',
-      password: '123',
+      password: '1234',
       database: 'my_vue_blog',
       connectionLimit: 10
     },
@@ -28,7 +28,7 @@ module.exports = {
   appPath: 'src',
   tempUploads: 'tempUploads',
   uploads: 'uploads',
-  port: 9000,
+  port: 9001,
   tokenSecret: 'test',
   isUpdateAdmin: false,
   accessControlAllowOrigin: 'http://127.0.0.1:3000',

@@ -1,6 +1,4 @@
-# vue-blog 后台管理系统
-
----
+# 后台管理系统
 
 ## 技术栈
 
@@ -9,10 +7,11 @@
 3. mysql
 4. redis
 5. websocket
+6. element-ui
 
 ## 版本
 
-`v2.0`
+`v2.1`
 
 ## 更新记录
 
@@ -27,26 +26,28 @@
    - 优化页面
    - 修复已知的 bug
    - 增加了 vuex 状态管理
+5. 2019-11-03
+   - 优化项目，项目 UI 使用 element ui
+   - 修复已知的 bug
+   - 不仅仅是博客后台
+   - css 预编译改用 sass
 
 ## 完成的功能
 
-- v1.x
-  1. 登录页面
-  2. 文章列表，文章的编辑，发布，下线，socket 实时保存
-  3. 新增文章编辑
-  4. 分类列表，分类的删除，编辑，新增
-  5. 标签列表，标签的删除，编辑，新增
-  6. 项目列表，项目的删除，编辑，新增
-  7. 留言板与 github 认证
-- v2.x
-  1. 项目升级到 vue-cli3
+1. 登录页面
+2. 文章列表，文章的编辑，发布，下线，socket 实时保存
+3. 新增文章编辑
+4. 分类列表，分类的删除，编辑，新增
+5. 标签列表，标签的删除，编辑，新增
+6. 项目列表，项目的删除，编辑，新增
+7. 留言板与 github 认证
 
 ### 待完成的功能
 
 1. ~~github 认证~~
 2. ~~评论管理~~
 3. 编辑器的优化
-4. 首页增加可视化图表
+4. ~~首页增加可视化图表~~
 5. 获取用户位置
 6. 留言管理功能
 7. ...
@@ -86,51 +87,167 @@ exit
 ## 目录
 
 ```txt
-├─public  # 静态页面
-├─server  # 服务端
-│  ├─api  # 前台/后台的接口
-│  │  ├─admin
-│  │  ├─oauth
-│  │  ├─post
-│  │  └─track
-│  ├─config # 配置文件
-│  │  ├─environment
-│  │  └─src # 上传的图片
-│  │      ├─tempUploads
-│  │      └─uploads
-│  │          ├─20190226
-│  │          ├─20190228
-│  │          ├─20190309
-│  │          └─20190602
-│  ├─middlreware # 一些中间件
-│  ├─routes # 后端路由
-│  └─util # 公共方法
-└─src # 后台代码
-    ├─api # resetful API
-    │  └─restfulApi
-    ├─assets # 静态文件夹
-    ├─common # 公共的代码
-    │  ├─images
-    │  ├─scripts
-    │  └─styles
-    ├─components # 组件
-    │  ├─header
-    │  ├─menu
-    │  ├─message
-    │  └─messageBox
-    ├─config # 配置文件
-    ├─router # 路由
-    ├─store  # vuex
-    └─views  # 页面
-        ├─404 # 404
-        ├─category # 分类
-        ├─edit # 编辑
-        ├─home # 首页
-        ├─itemlist # 个人项目
-        ├─login # 登录页
-        ├─musiclist # 空文件夹
-        ├─postlist # 文章列表
-        └─tag # 标签列表
+|-- README.md
+|-- babel.config.js
+|-- build
+|   `-- index.js
+|-- dump.rdb
+|-- jsconfig.json
+|-- package-lock.json
+|-- package.json
+|-- postcss.config.js
+|-- public
+|   `-- index.html
+|-- server
+|   |-- api
+|   |   |-- admin
+|   |   |   |-- admin.controller.js
+|   |   |   |-- admin.js
+|   |   |   |-- category.controller.js
+|   |   |   |-- laboratory.controller.js
+|   |   |   |-- post.controller.js
+|   |   |   `-- tag.controller.js
+|   |   |-- oauth
+|   |   |   |-- github.controller.js
+|   |   |   `-- index.js
+|   |   |-- post
+|   |   |   |-- comment.controller.js
+|   |   |   |-- post.controller.js
+|   |   |   `-- post.js
+|   |   `-- track
+|   |       |-- track.controller.js
+|   |       `-- track.js
+|   |-- app.js
+|   |-- config
+|   |   |-- environment
+|   |   |   |-- development.js
+|   |   |   `-- index.js
+|   |   |-- koa.js
+|   |   `-- src
+|   |       |-- tempUploads
+|   |       `-- uploads
+|   |-- middlreware
+|   |   `-- tokenError.js
+|   |-- routes
+|   |   `-- index.js
+|   `-- util
+|       |-- admin-account.js
+|       |-- draft-redis.js
+|       |-- draft-socketio.js
+|       |-- helper.js
+|       |-- mysql-async.js
+|       |-- redis-mysql.js
+|       `-- redis-store.js
+|-- src
+|   |-- App.vue
+|   |-- api
+|   |   |-- blog
+|   |   |   |-- category.js
+|   |   |   |-- config.js
+|   |   |   |-- post.js
+|   |   |   |-- project.js
+|   |   |   |-- tag.js
+|   |   |   `-- user.js
+|   |   `-- index.js
+|   |-- assets
+|   |   |-- 404_images
+|   |   |   |-- 404.png
+|   |   |   `-- 404_cloud.png
+|   |   `-- user
+|   |       |-- admin.png
+|   |       `-- user.png
+|   |-- components
+|   |   |-- Breadcrumb
+|   |   |   `-- index.vue
+|   |   |-- Hamburger
+|   |   |   `-- index.vue
+|   |   |-- SvgIcon
+|   |   |   `-- index.vue
+|   |   |-- markdown
+|   |   |   `-- index.vue
+|   |   |-- postTable
+|   |   |   `-- index.vue
+|   |   |-- project
+|   |   |   `-- index.vue
+|   |   `-- upload
+|   |       `-- index.vue
+|   |-- icons
+|   |   |-- index.js
+|   |   |-- svg
+|   |   |   |-- add.svg
+|   |   |   |-- button.svg
+|   |   |   |-- dashboard.svg
+|   |   |   |-- delete.svg
+|   |   |   |-- edit.svg
+|   |   |   |-- example.svg
+|   |   |   |-- eye-open.svg
+|   |   |   |-- eye.svg
+|   |   |   |-- form.svg
+|   |   |   |-- link.svg
+|   |   |   |-- list.svg
+|   |   |   |-- nested.svg
+|   |   |   |-- password.svg
+|   |   |   |-- table.svg
+|   |   |   |-- tree.svg
+|   |   |   `-- user.svg
+|   |   `-- svgo.yml
+|   |-- layout
+|   |   |-- components
+|   |   |   |-- AppMain.vue
+|   |   |   |-- Navbar.vue
+|   |   |   |-- Sidebar
+|   |   |   |   |-- FixiOSBug.js
+|   |   |   |   |-- Item.vue
+|   |   |   |   |-- Link.vue
+|   |   |   |   |-- Logo.vue
+|   |   |   |   |-- SidebarItem.vue
+|   |   |   |   `-- index.vue
+|   |   |   `-- index.js
+|   |   |-- index.vue
+|   |   `-- mixin
+|   |       `-- ResizeHandler.js
+|   |-- main.js
+|   |-- permission.js
+|   |-- router
+|   |   `-- index.js
+|   |-- settings.js
+|   |-- store
+|   |   |-- getters.js
+|   |   |-- index.js
+|   |   `-- modules
+|   |       |-- app.js
+|   |       |-- settings.js
+|   |       `-- user.js
+|   |-- styles
+|   |   |-- element-ui.scss
+|   |   |-- index.scss
+|   |   |-- markdown.css
+|   |   |-- mixin.scss
+|   |   |-- sidebar.scss
+|   |   |-- transition.scss
+|   |   `-- variables.scss
+|   |-- utils
+|   |   |-- auth.js
+|   |   |-- axios.js
+|   |   |-- get-page-title.js
+|   |   `-- validate.js
+|   `-- views
+|       |-- 404.vue
+|       |-- articleList
+|       |   `-- index.vue
+|       |-- dashboard
+|       |   `-- index.vue
+|       |-- editArticle
+|       |   `-- index.vue
+|       |-- labelManager
+|       |   `-- index.vue
+|       |-- login
+|       |   `-- index.vue
+|       |-- myProject
+|       |   `-- index.vue
+|       `-- sortManager
+|           `-- index.vue
+`-- vue.config.js
 ```
 
 ## 关键技术点
@@ -166,7 +283,5 @@ exit
 - ![效果6](./screenshot/6.png)
 - ![效果7](./screenshot/7.png)
 - ![效果8](./screenshot/8.png)
-
-## 其他
-
-> MIT
+- ![效果8](./screenshot/9.png)
+- ![效果8](./screenshot/10.png)

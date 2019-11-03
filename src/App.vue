@@ -4,13 +4,11 @@
   </div>
 </template>
 
-<style lang="less">
-@import "./common/styles/index";
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  position: relative;
-}
+<script>
+export default {
+  name: "App"
+};
+</script>
+<style lang="css">
+@import "./styles/markdown.css";
 </style>

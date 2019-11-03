@@ -27,7 +27,7 @@ exports.login = async (ctx) => {
         };
         // 签发token
         const token = jwt.sign(userToken, config.tokenSecret, {
-          expiresIn: '2h'
+          expiresIn: '24h'
         });
         ctx.body = {
           success: 1,

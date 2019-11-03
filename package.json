@@ -1,35 +1,37 @@
 {
-  "name": "vue-blog-management-v2",
-  "version": "2.0.0",
-  "private": true,
-  "description": "vue-blog-managemen vue-cli3重构版",
-  "author": "github:dirhe1051931999",
+  "name": "vue-blog-admin-template",
+  "version": "4.2.1",
+  "description": "后台管理平台",
+  "author": "hejiandirk@163.com",
+  "license": "MIT",
   "script": {
     "redis": "第一步：开启redis",
     "server": "第二步：开启后端服务",
     "dev": "第三步：开启前端服务器",
     "build": "生成环境",
+    "preview": "预发布环境",
     "lint": "开启eslint校验",
-    "test": "开启单元测试"
+    "test": "开启单元测试",
+    "svgo": "svg压缩"
   },
   "scripts": {
     "redis": "redis-server",
     "server": "nodemon --inspect server/app.js",
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "",
-    "test": ""
+    "preview": "node build/index.js --preview",
+    "lint": "eslint --ext .js,.vue src",
+    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
   "dependencies": {
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
     "crypto": "^1.0.1",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
+    "echarts": "^4.4.0",
+    "element-ui": "^2.12.0",
     "formidable": "^1.2.1",
     "ioredis": "^4.6.2",
+    "js-cookie": "2.2.0",
     "jsonwebtoken": "^8.1.0",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
@@ -43,37 +45,50 @@
     "mysql": "^2.16.0",
     "node-fetch": "^2.3.0",
     "node-schedule": "^1.3.2",
+    "normalize.css": "7.0.0",
+    "nprogress": "0.2.0",
+    "path-to-regexp": "2.4.0",
     "socket.io": "^2.0.4",
     "socket.io-client": "^2.0.4",
-    "vue": "^2.6.10",
-    "vue-router": "^3.0.3",
+    "v-charts": "^1.19.0",
+    "vue": "2.6.10",
+    "vue-router": "3.0.6",
     "vue-socket.io": "^2.1.1-a",
-    "vuex": "^3.0.1"
+    "vuex": "3.1.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.7.0",
-    "@vue/cli-service": "^3.7.0",
+    "@babel/core": "7.0.0",
+    "@babel/register": "7.0.0",
+    "@vue/cli-plugin-babel": "3.6.0",
+    "@vue/cli-plugin-eslint": "^3.9.1",
+    "@vue/cli-plugin-unit-jest": "3.6.3",
+    "@vue/cli-service": "3.6.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "autoprefixer": "^9.5.1",
     "babel-core": "7.0.0-bridge.0",
-    "babel-loader": "^7.1.5",
-    "compression-webpack-plugin": "^2.0.0",
-    "less": "^3.9.0",
-    "less-loader": "^4.1.0",
-    "vue-template-compiler": "^2.6.10",
-    "webpack-bundle-analyzer": "^3.3.2"
+    "babel-eslint": "10.0.1",
+    "babel-jest": "23.6.0",
+    "chalk": "2.4.2",
+    "connect": "3.6.6",
+    "eslint": "5.15.3",
+    "eslint-plugin-vue": "5.2.2",
+    "html-webpack-plugin": "3.2.0",
+    "node-sass": "^4.9.0",
+    "runjs": "^4.3.2",
+    "sass-loader": "^7.1.0",
+    "script-ext-html-webpack-plugin": "2.1.3",
+    "script-loader": "0.7.2",
+    "serve-static": "^1.13.2",
+    "svg-sprite-loader": "4.1.3",
+    "svgo": "1.2.2",
+    "vue-template-compiler": "2.6.10"
   },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "keywords": [
-    "vue-cli3",
-    "vue",
-    "axios",
-    "blog"
-  ],
   "engines": {
-    "node": ">= 6.0.0",
+    "node": ">=8.9",
     "npm": ">= 3.0.0"
   },
-  "license": "MIT"
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
